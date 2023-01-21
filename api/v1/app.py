@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+"""Endpoint (route) will be to return the status of Api"""
 from models import storage
 from api.v1.views import app_views
 from os import getenv
 from flask import *
+
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
