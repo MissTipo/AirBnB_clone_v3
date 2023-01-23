@@ -1,14 +1,17 @@
 #!/usr/bin/python3
+
 """Endpoint (route) will be to return the status of Api"""
 from models import storage
 from api.v1.views import app_views
 from os import getenv
 from flask import *
+from flask_cors import CORS
 
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+cors = CORS(app, resources={r"/api/v1/*": {"origins": "0.0.0.0"}})
 
 
 @app.teardown_appcontext
