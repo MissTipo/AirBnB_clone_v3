@@ -42,7 +42,7 @@ def del_city(city_id):
     return jsonify({})
 
 
-@app_views.route('/states/<string:state_id>/cities', methods=['POST'],
+@app_views.route('/states/<state_id>/cities', methods=['POST'],
                  strict_slashes=False)
 def create_obj_city(state_id):
     """ create new instance """
@@ -61,10 +61,10 @@ def create_obj_city(state_id):
     return jsonify(obj.to_dict()), 201
 
 
-@app_views.route('/cities/<string:city_id>', methods=['PUT'],
+@app_views.route('/cities/<city_id>', methods=['PUT'],
                  strict_slashes=False)
 def post_city(city_id):
-    """  """
+    """Creates a City"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     obj = storage.get(City, city_id)
